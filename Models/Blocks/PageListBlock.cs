@@ -1,6 +1,7 @@
+using EPiServer.Filters;
+
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using EPiServer.Filters;
 
 namespace CMS12.Alloy.Models.Blocks;
 

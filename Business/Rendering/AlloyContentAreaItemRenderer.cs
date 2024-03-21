@@ -1,8 +1,11 @@
 using EPiServer.Web;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+
 using Microsoft.AspNetCore.Mvc.TagHelpers;
-using static CMS12.Alloy.Globals;
+using Microsoft.AspNetCore.Razor.TagHelpers;
+
 using System.Text;
+
+using static CMS12.Alloy.Globals;
 
 namespace CMS12.Alloy.Business.Rendering;
 
@@ -36,9 +39,9 @@ public class AlloyContentAreaItemRenderer
         };
     }
 
-    private static string GetTypeSpecificCssClasses(ContentAreaItem contentAreaItem)
+    private string GetTypeSpecificCssClasses(ContentAreaItem contentAreaItem)
     {
-        var content = contentAreaItem.GetContent();
+        var content = _contentAreaLoader.LoadContent(contentAreaItem);
         var cssClass = content == null ? string.Empty : content.GetOriginalType().Name.ToLowerInvariant();
 
         if (content is ICustomCssInContentArea customClassContent &&
